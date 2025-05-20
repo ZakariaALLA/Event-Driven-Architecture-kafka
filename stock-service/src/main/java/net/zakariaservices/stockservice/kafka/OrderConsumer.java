@@ -16,8 +16,8 @@ public class OrderConsumer {
             ,groupId = "${spring.kafka.consumer.group-id}"
     )
     public void consume(OrderEvent event){
-        LOGGER.info(String.format("Order event received in stock service => %s", event.toString()));
+        LOGGER.info("Order event received in stock service => {}", event.toString());
 
-        // save the order event into the database
+        // TODO: save the order event into the database
     }
 }
