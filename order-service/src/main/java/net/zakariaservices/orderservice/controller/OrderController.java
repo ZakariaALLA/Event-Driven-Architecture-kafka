@@ -3,6 +3,7 @@ package net.zakariaservices.orderservice.controller;
 import net.zakariaservices.basedomains.dto.Order;
 import net.zakariaservices.basedomains.dto.OrderEvent;
 import net.zakariaservices.orderservice.kafka.OrderProducer;
+import net.zakariaservices.orderservice.service.OrderService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,24 +15,14 @@ import java.util.UUID;
 @RequestMapping("/api/v1")
 public class OrderController {
 
-    private OrderProducer orderProducer;
+    private OrderService orderService;
 
-    public OrderController(OrderProducer orderProducer) {
-        this.orderProducer = orderProducer;
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     @PostMapping("/orders")
     public String placeOrder(@RequestBody Order order){
-
-        order.setOrderId(UUID.randomUUID().toString());
-
-        OrderEvent orderEvent = new OrderEvent();
-        orderEvent.setStatus("PENDING");
-        orderEvent.setMessage("order status is in pending state");
-        orderEvent.setOrder(order);
-
-        orderProducer.sendMessage(orderEvent);
-
-        return "Order placed successfully ...";
+        return this.orderService.processOrder(order);
     }
 }
