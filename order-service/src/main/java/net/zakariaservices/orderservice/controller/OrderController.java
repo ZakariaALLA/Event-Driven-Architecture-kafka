@@ -1,15 +1,11 @@
 package net.zakariaservices.orderservice.controller;
 
 import net.zakariaservices.basedomains.dto.Order;
-import net.zakariaservices.basedomains.dto.OrderEvent;
-import net.zakariaservices.orderservice.kafka.OrderProducer;
 import net.zakariaservices.orderservice.service.OrderService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1")

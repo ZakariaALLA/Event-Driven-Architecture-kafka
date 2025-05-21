@@ -10,7 +10,7 @@ import java.util.UUID;
 @Service
 public class OrderService {
 
-    private OrderProducer orderProducer;
+    private final OrderProducer orderProducer;
 
     public OrderService(OrderProducer orderProducer) {
         this.orderProducer = orderProducer;

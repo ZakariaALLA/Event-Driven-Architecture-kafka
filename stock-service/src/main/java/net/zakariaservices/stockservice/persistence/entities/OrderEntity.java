@@ -12,26 +12,6 @@ public class OrderEntity {
     private double price;
     private String userEmail;
 
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
